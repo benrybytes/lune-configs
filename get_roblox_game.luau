@@ -67,9 +67,10 @@ if placeFile then
 		fs.writeFile(game_file, gameBinary)
 	end
 
-	--[[ local file = fs.readFile(game_file)
+	local file = fs.readFile(game_file)
 	local game = roblox.deserializePlace(file)
-	local SERVICES = { "Workspace", "ReplicatedStorage", "ServerStorage", "Lighting" }
+	local SERVICES =
+		{ "Workspace", "ReplicatedStorage", "ServerStorage", "Lighting", "StarterPlayer", "ServerScriptService" }
 
 	-- Iterate through each service and save it as an .rbxm file
 	for _, serviceName in pairs(SERVICES) do
@@ -83,7 +84,7 @@ if placeFile then
 	end
 	-- Save the DataModel (game) back to the file that we read it from
 	file = roblox.serializePlace(game)
-	fs.writeFile(game_file, file) ]]
+	fs.writeFile(game_file, file)
 else
 	print("Failed to fetch place file.")
 end
